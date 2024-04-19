@@ -1,0 +1,46 @@
+.image-container {
+  display: flex;
+  justify-content: space-between;
+  width: fit-content;
+}
+
+.image-container img {
+  width: 116px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.tilted-l {
+  transform: rotate(5deg);
+  transition: transform 0.3s ease-in-out;
+}
+.tilted-r {
+  transform: rotate(-5deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.tilted-l:hover,
+.tilted-r:hover {
+  transform: rotate(5deg);
+  transform: scale(1.2);
+}
+.tilted-l:hover {
+  transform: rotate(-5deg);
+  transform: scale(1.2);
+}
+.centered {
+  transform: scale(1.1);
+  position: relative; /* Enable positioning for overlapping */
+  z-index: 2; /* Set stacking order to appear on top */
+  transition: transform 0.3s ease-in-out;
+}
+
+.centered:hover {
+  transform: scale(1.2);
+}
+
+.overlap {
+  /* Adjust these values to control overlap area */
+  top: -20px; /* Move image upwards */
+  left: -10px; /* Move image slightly to the left */
+}
