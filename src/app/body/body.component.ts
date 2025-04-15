@@ -8,11 +8,10 @@ import {
   Validators,
 } from '@angular/forms';
 @Component({
-  selector: 'app-body',
-  standalone: true,
-  imports: [NgbModule, ReactiveFormsModule],
-  templateUrl: './body.component.html',
-  styleUrl: './body.component.scss',
+    selector: 'app-body',
+    imports: [NgbModule, ReactiveFormsModule],
+    templateUrl: './body.component.html',
+    styleUrl: './body.component.scss'
 })
 export class BodyComponent {
   active = 1;

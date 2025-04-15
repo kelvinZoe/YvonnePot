@@ -12,11 +12,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { BodyComponent } from '../body/body.component';
 @Component({
-  selector: 'app-welcome',
-  standalone: true,
-  imports: [FontAwesomeModule, BodyComponent],
-  templateUrl: './welcome.component.html',
-  styleUrl: './welcome.component.scss',
+    selector: 'app-welcome',
+    imports: [FontAwesomeModule, BodyComponent],
+    templateUrl: './welcome.component.html',
+    styleUrl: './welcome.component.scss'
 })
 export class WelcomeComponent {
   famicrochip = faMicrophone;
