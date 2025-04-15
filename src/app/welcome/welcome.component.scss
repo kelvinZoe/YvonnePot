@@ -1,7 +1,6 @@
 .image-container {
   display: flex;
-  justify-content: space-between;
-  width: fit-content;
+  justify-content: center;
 }
 
 .image-container img {
@@ -14,6 +13,7 @@
   transform: rotate(5deg);
   transition: transform 0.3s ease-in-out;
 }
+
 .tilted-r {
   transform: rotate(-5deg);
   transition: transform 0.3s ease-in-out;
@@ -24,14 +24,18 @@
   transform: rotate(5deg);
   transform: scale(1.2);
 }
+
 .tilted-l:hover {
   transform: rotate(-5deg);
   transform: scale(1.2);
 }
+
 .centered {
   transform: scale(1.1);
-  position: relative; /* Enable positioning for overlapping */
-  z-index: 2; /* Set stacking order to appear on top */
+  position: relative;
+  /* Enable positioning for overlapping */
+  z-index: 2;
+  /* Set stacking order to appear on top */
   transition: transform 0.3s ease-in-out;
 }
 
@@ -41,6 +45,8 @@
 
 .overlap {
   /* Adjust these values to control overlap area */
-  top: -20px; /* Move image upwards */
-  left: -10px; /* Move image slightly to the left */
+  top: -20px;
+  /* Move image upwards */
+  left: -10px;
+  /* Move image slightly to the left */
 }

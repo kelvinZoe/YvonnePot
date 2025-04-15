@@ -1,0 +1,51 @@
+<!-- From Uiverse.io by ammarsaa -->
+
+<form class="form" autocomplete="off" (ngSubmit)="onSubmit()" #form="ngForm">
+
+    @if(registerMode) {
+    <p class="title">Register </p>
+    }
+    @else {
+    <p class="title">Login </p>
+    }
+    <button class="gobackbutton" type="button" routerLink="/"> Go back</button>
+    @if(registerMode) {
+    <p class="message">Register now and get full access.</p>
+    }
+    @else {
+    <p class="message">Login now and get full access. </p>
+    }
+
+
+    <label>
+        <input class="input" type="email" name="email" required [(ngModel)]="email" placeholder="">
+        <span>Email</span>
+    </label>
+
+    <label>
+        <input class="input" type="password" name="password" required [(ngModel)]="password" placeholder="">
+        <span>Password</span>
+    </label>
+    @if(registerMode) {
+    <label>
+        <input class="input" type="password" required name="confirmPassword" [(ngModel)]="confirmPassword"
+            placeholder="">
+        <span>Confirm password</span>
+    </label>
+    }
+
+    <button class="submit">Submit</button>
+    @if(!registerMode) {
+    <p class="signin">Dont have an account ? <a (click)="registerMode = true">Register</a> </p>
+    }
+    @else {
+    <p class="signin">Already have an account ? <a (click)="registerMode = false">Signin</a> </p>
+    }
+</form>
+
+<div class="toast-container position-fixed top-0 end-0 p-3">
+    <ngb-toast *ngIf="showToast" [autohide]="true" [delay]="5000" (hidden)="showToast = false" class=" text-white"
+        [ngClass]="{'bg-success': !toastMessage.isError, 'bg-danger': toastMessage.isError}">
+        {{ toastMessage.message }}
+    </ngb-toast>
+</div>

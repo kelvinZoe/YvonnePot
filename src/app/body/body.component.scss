@@ -3,9 +3,9 @@
   border-bottom: 1px solid #b3b1b1;
   color: grey !important;
 }
-button {
-  background: none !important;
-  color: black;
+
+.button {
+  color: rgb(35, 35, 35) !important;
 }
 
 // button:focus {
@@ -14,5 +14,75 @@ button {
 // }
 .nav-link.active {
   color: white !important;
-  background: #b3b0b0 !important;
+  background: #ad9354 !important;
+  border-bottom: #b3b1b1;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #fff;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+}
+
+.form label {
+  position: relative;
+}
+
+.form label .input {
+  background-color: #333;
+  color: #fff;
+  width: 100%;
+  padding: 20px 05px 05px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+}
+
+.form label .input+span {
+  color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+.form label .input:placeholder-shown+span {
+  top: 12.5px;
+  font-size: 0.9em;
+}
+
+.form label .input:focus+span,
+.form label .input:valid+span {
+  color: #ad9354;
+  top: 0px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.input {
+  font-size: medium;
+}
+
+.submit {
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: .3s ease;
+  background-color: #ad9354;
+}
+
+.submit:hover {
+  background-color: #ad9354;
 }

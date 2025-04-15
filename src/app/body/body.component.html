@@ -3,41 +3,30 @@
   <li [ngbNavItem]="1">
     <button class="button" ngbNavLink>Wish Me Here!</button>
     <ng-template ngbNavContent>
-      <form [formGroup]="birthdayWishForm" class="mb-3">
-        <div class="mb-3">
-          <label for="name" class="form-label">Name (Optional)</label>
-          <input
-            type="email"
-            class="form-control"
-            id=""
-            formControlName="name"
-            placeholder="Enter your name"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="message" class="form-label">Birthday Message</label>
-          <textarea
-            class="form-control"
-            id="exampleFormControlTextarea1"
-            placeholder="Enter your birthday wish"
-            formControlName="message"
-            rows="3"
-          ></textarea>
-        </div>
-        <div class="text-end">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            [disabled]="birthdayWishForm.invalid"
-          >
-            Send
-          </button>
-        </div>
+      <form [formGroup]="birthdayWishForm" class="mb-3 form">
+
+        <label for="name">
+          <input type="email" class="input" id="" formControlName="name" placeholder="" required />
+          <span>Name (Optional)</span>
+        </label>
+
+
+        <label for="message">
+          <textarea class="input" id="exampleFormControlTextarea1" placeholder="" formControlName="message" rows="3"
+            required></textarea>
+          <span>Birthday Message</span>
+        </label>
+
+
+        <button class="submit">
+          Send
+        </button>
+
       </form>
     </ng-template>
   </li>
   <li [ngbNavItem]="2">
-    <button ngbNavLink>Wishes</button>
+    <button ngbNavLink class="button">Wishes</button>
     <ng-template ngbNavContent>
       <p>
         Exercitation +1 labore velit, blog sartorial PBR leggings next level wes
