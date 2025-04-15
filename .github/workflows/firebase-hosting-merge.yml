@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm ci && npm i
+      - run: npm i && npm ci
       - run: npm run build # Build the Angular app
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
