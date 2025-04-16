@@ -1,0 +1,19 @@
+[debug] [2025-04-16T07:57:00.882Z] ----------------------------------------------------------------------
+[debug] [2025-04-16T07:57:00.884Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2025-04-16T07:57:00.884Z] CLI Version:   14.1.0
+[debug] [2025-04-16T07:57:00.884Z] Platform:      darwin
+[debug] [2025-04-16T07:57:00.884Z] Node Version:  v20.16.0
+[debug] [2025-04-16T07:57:00.884Z] Time:          Wed Apr 16 2025 07:57:00 GMT+0000 (Greenwich Mean Time)
+[debug] [2025-04-16T07:57:00.884Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-04-16T07:57:00.885Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2025-04-16T07:57:00.999Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-04-16T07:57:00.999Z] > authorizing via signed-in user (zoeinventions@gmail.com)
+[debug] [2025-04-16T07:57:00.999Z] [iam] checking project yvieee for permissions ["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]
+[debug] [2025-04-16T07:57:00.999Z] Checked if tokens are valid: false, expires at: 1744700529158
+[debug] [2025-04-16T07:57:01.000Z] Checked if tokens are valid: false, expires at: 1744700529158
+[debug] [2025-04-16T07:57:01.000Z] > refreshing access token with scopes: []
+[debug] [2025-04-16T07:57:01.000Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-04-16T07:57:01.000Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-04-16T07:57:02.570Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2025-04-16T07:57:02.571Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
