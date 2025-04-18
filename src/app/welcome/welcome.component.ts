@@ -13,6 +13,7 @@ import {
 import { BodyComponent } from '../body/body.component';
 @Component({
   selector: 'app-welcome',
+  standalone: true,
   imports: [FontAwesomeModule, BodyComponent],
   templateUrl: './welcome.component.html',
   styleUrl: './welcome.component.scss',

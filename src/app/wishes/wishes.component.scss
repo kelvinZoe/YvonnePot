@@ -1,0 +1,27 @@
+.wish-card {
+    color: #555;
+    background: #e2e2e2;
+    border: 1px solid #c6c6c6;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+
+    p {
+        font-size: 1em;
+    }
+
+    h6 {
+        display: flex;
+        justify-content: flex-end;
+        font-family: 'Apple Chancery', 'cursive';
+
+    }
+
+}
+
+.logout {
+    border: 1px solid #c6c6c6;
+    padding: 3px 14px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,43 @@
+<!-- <div class="wishes-container">
+    <div class="wish-card" *ngFor="let wish of wishes">
+        <h2 class="wish-name">Name: {{ wish.name }}</h2>
+        <p class="wish-message"><fa-icon [icon]="faquoteleft"></fa-icon> {{ wish.message }}
+            <fa-icon [icon]="faquoteright"></fa-icon>
+        </p>
+    </div>
+        font-size: 1rem;
+        color: #555;
+        background: #e2e2e2;
+        border: 1px solid #c6c6c6;
+        padding: 10px;
+        border-radius: 6px;
+</div> -->
+@if(isLoading){
+<div class="loader-container">
+    <app-loader />
+</div>
+}
+@else if(!isLoading && !unauthorized){
+<div class="d-flex justify-content-end">
+    <div class="logout" (click)="logout()">
+        <fa-icon [icon]="farupright"></fa-icon> <span class="ps-2">Logout</span>
+    </div>
+</div>
+
+<div class="wish-card" *ngFor="let wish of wishes">
+    <p> <fa-icon [icon]="faquoteleft"></fa-icon> {{ wish.message }}
+        <fa-icon [icon]="faquoteright"></fa-icon>
+    </p>
+    <h6 class="wish-name">{{ wish.name }}</h6>
+</div>
+}
+@else if(!isLoading && unauthorized){
+<h4 class="text-center m-3">Sorry, you cannot view Any messages</h4>
+}
+
+<div class="toast-container position-fixed top-0 end-0 p-3">
+    <ngb-toast *ngIf="signingOut" [autohide]="true" [delay]="500000" (hidden)="signingOut = false"
+        class="bg-light-subtle ">
+        <app-loading />
+    </ngb-toast>
+</div>

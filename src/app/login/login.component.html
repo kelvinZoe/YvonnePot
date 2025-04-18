@@ -49,3 +49,9 @@
         {{ toastMessage.message }}
     </ngb-toast>
 </div>
+<div class="toast-container position-fixed top-0 end-0 p-3">
+    <ngb-toast *ngIf="isLoading" [autohide]="true" [delay]="500000" (hidden)="showToast = false"
+        class="bg-light-subtle ">
+        <app-loading />
+    </ngb-toast>
+</div>

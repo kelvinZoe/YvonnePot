@@ -366,11 +366,6 @@ Awesome, nor vice versa. **Please do not use brand logos for any purpose except
 to represent the company, product, or service to which they refer.**
 
 --------------------------------------------------------------------------------
-Package: @angular/fire
-License: "MIT"
-
-
---------------------------------------------------------------------------------
 Package: @firebase/webchannel-wrapper
 License: "Apache-2.0"
 
@@ -378,6 +373,11 @@ License: "Apache-2.0"
 --------------------------------------------------------------------------------
 Package: @firebase/firestore
 License: "Apache-2.0"
+
+
+--------------------------------------------------------------------------------
+Package: @angular/fire
+License: "MIT"
 
 
 --------------------------------------------------------------------------------

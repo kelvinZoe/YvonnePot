@@ -1,12 +1,21 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, TemplateRef, ViewChild } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { FirebaseService } from '../services/firebase.service';
 import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { LoaderComponent } from '../loader/loader.component';
+import { LoadingComponent } from '../loading/loading.component';
 @Component({
   selector: 'app-login',
-  imports: [FormsModule, CommonModule, NgbToastModule, RouterModule],
+  imports: [
+    FormsModule,
+    CommonModule,
+    NgbToastModule,
+    RouterModule,
+    LoaderComponent,
+    LoadingComponent,
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
@@ -24,7 +33,9 @@ export class LoginComponent {
     isError: false,
     message: '',
   };
-  constructor() {}
+
+  isLoading: boolean = false;
+  constructor(private router: Router) {}
 
   onSubmit() {
     if (this.registerMode) {
@@ -34,15 +45,16 @@ export class LoginComponent {
     }
   }
   onRegister() {
-    console.log('Registering user:', this.email, this.password);
+    this.isLoading = true;
     if (this.password !== this.confirmPassword) {
-      console.log('Passwords do not match');
+      this.isLoading = false;
       this.errorMessage = 'Passwords do not match.';
       this.showToastMessage(this.errorMessage, true);
       return;
     }
 
     if (!this.email || !this.password) {
+      this.isLoading = false;
       this.errorMessage = 'Please fill in all fields.';
       this.showToastMessage(this.errorMessage, true);
       return;
@@ -55,36 +67,29 @@ export class LoginComponent {
       this.auth
         .signUp(this.email, this.password)
         .then(() => {
+          this.isLoading = false;
           this.successMessage = 'Registration successful!';
           this.showToastMessage(this.successMessage, false);
         })
         .catch((error) => {
+          this.isLoading = false;
           this.errorMessage = 'Registration failed: ' + error.message;
           this.showToastMessage(this.errorMessage, true);
         });
     } else {
+      this.isLoading = false;
       this.errorMessage = 'Sorry, you cannot create an account.';
       this.showToastMessage(this.errorMessage, true);
       return;
     }
-    // this.auth
-    //   .signUp(this.email, this.password)
-    //   .then(() => {
-    //     this.successMessage = 'Registration successful!';
-    //     this.showToastMessage(this.successMessage, false);
-    //   })
-    //   .catch((error) => {
-    //     this.errorMessage = 'Registration failed: ' + error.message;
-    //     this.showToastMessage(this.errorMessage, true);
-    //   });
-    // Call your Firebase authentication service here
-    // Example: this.firebaseService.signUp(this.email, this.password);
   }
 
   onLogin() {
+    this.isLoading = true;
     // Call your Firebase authentication service here
     // Example: this.firebaseService.signIn(this.email, this.password);
     if (!this.email || !this.password) {
+      this.isLoading = false;
       this.errorMessage = 'Please fill in all fields.';
       this.showToastMessage(this.errorMessage, true);
       return;
@@ -92,13 +97,15 @@ export class LoginComponent {
     this.auth
       .signIn(this.email, this.password)
       .then(() => {
+        this.isLoading = false;
         this.successMessage = 'Login successful!';
         this.showToastMessage(this.successMessage, false);
+        this.router.navigate(['/']); // Navigate to the wishes page
       })
       .catch((error) => {
-        console.log('Login error:', error);
+        this.isLoading = false;
         if (error.message.includes('auth/invalid-email')) {
-          this.errorMessage = 'Sorry, Invalid email address.';
+          this.errorMessage = 'Sorry, you are not registered.';
         } else if (error.message.includes('auth/invalid-credential')) {
           this.errorMessage = 'Sorry, you are not registered.';
         } else if (error.message === ' Login failed: auth/wrong-password') {
@@ -111,5 +118,8 @@ export class LoginComponent {
   showToastMessage(message: string, isError: boolean) {
     this.toastMessage = { isError, message };
     this.showToast = true;
+  }
+  closeToast() {
+    this.showToast = false;
   }
 }

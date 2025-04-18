@@ -7,13 +7,23 @@ import {
 } from '@angular/fire/auth';
 import firebase from 'firebase/app';
 import 'firebase/database';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import {
+  Database,
+  set,
+  ref,
+  update,
+  get,
+  getDatabase,
+  push,
+} from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseService {
   private Auth = inject(Auth);
-  constructor() {}
+  constructor(private db: Database) {}
   //fetch data from firebase
   async signUp(email: string, password: string) {
     try {
@@ -24,7 +34,6 @@ export class FirebaseService {
       );
       return userCredential;
     } catch (error) {
-      console.error('Error signing up:', error);
       throw error;
     }
   }
@@ -44,9 +53,50 @@ export class FirebaseService {
   async signOut() {
     try {
       await signOut(this.Auth);
-      console.log('User signed out');
     } catch (error) {
-      console.error('Error signing out:', error);
+      throw error;
+    }
+  }
+
+  async addItem(message: { name: string; message: string }) {
+    try {
+      let messafeRef: any;
+      messafeRef = ref(this.db, 'items/');
+      await push(messafeRef, message);
+      return messafeRef;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async updateItem(id: string, message: { name: string; message: string }) {
+    try {
+      const itemRef = ref(this.db, 'items/' + id);
+      await update(itemRef, message);
+    } catch (error) {
+      throw error;
+    }
+  }
+  async getItems() {
+    try {
+      const user = this.Auth.currentUser; // Check if the user is authenticated
+      if (!user) {
+        throw new Error('User is not authenticated');
+      }
+
+      const itemRef = ref(this.db, 'items/');
+      const snapshot = await get(itemRef);
+      if (snapshot.exists()) {
+        const items = snapshot.val();
+        // Transform the object into an array
+        return Object.keys(items).map((key) => ({
+          id: key,
+          ...items[key],
+        }));
+      } else {
+        return [];
+      }
+    } catch (error: any) {
       throw error;
     }
   }
